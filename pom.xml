@@ -12,6 +12,7 @@
         <module>network</module>
         <module>spi</module>
         <module>camel</module>
+        <module>netty</module>
     </modules>
 
     <build>
