@@ -36,8 +36,9 @@ public class ReceiveDataStandardService extends ReceiveDataAbstractService<InBou
     }
 
     @Override
-    ReceiveDataStrategyFactory getReceiveDataStrategyFactory() {
+    ReceiveDataStrategyFactory<InBoundData> getReceiveDataStrategyFactory() {
         return receiveDataStrategyFactory;
     }
+
 
 }
