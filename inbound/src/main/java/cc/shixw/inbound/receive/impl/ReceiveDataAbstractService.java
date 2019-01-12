@@ -2,19 +2,20 @@ package cc.shixw.inbound.receive.impl;
 
 
 import cc.shixw.inbound.receive.ReceiveDataService;
-import cc.shixw.inbound.receive.strategy.ReceiveDataStrategyFactory;
+import cc.shixw.inbound.receive.strategy.ReceiveDataStrategyContext;
 import cc.shixw.inbound.receive.vo.ReceiveData;
 
 public abstract class ReceiveDataAbstractService<T> implements ReceiveDataService<T> {
 
 
-    public boolean receive(ReceiveData receiveData){
+    public final boolean receive(ReceiveData receiveData){
         before(receiveData);
-        if (!getReceiveDataStrategyFactory().getReceiveDataCheckStrategy(receiveData).check(receiveData)){
+        ReceiveDataStrategyContext<T> receiveDataStrategyContext = getReceiveDataStrategyContext(receiveData);
+        if (!receiveDataStrategyContext.check(receiveData)){
             return false;
         }
-        T inBoundData = getReceiveDataStrategyFactory().getReceiveDataAssemblyStrategy(receiveData).assembly(receiveData);
-        if (!getReceiveDataStrategyFactory().getReceiveDataSaveStrategy(receiveData).save(inBoundData)){
+        T inBoundData = receiveDataStrategyContext.assembly(receiveData);
+        if (!receiveDataStrategyContext.save(inBoundData)){
             return false;
         }
         after(receiveData);
@@ -25,5 +26,5 @@ public abstract class ReceiveDataAbstractService<T> implements ReceiveDataServic
 
     abstract void after(final ReceiveData receiveData);
 
-    abstract ReceiveDataStrategyFactory<T> getReceiveDataStrategyFactory();
+    abstract ReceiveDataStrategyContext<T> getReceiveDataStrategyContext(ReceiveData receiveData);
 }
