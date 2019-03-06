@@ -17,6 +17,7 @@
         <module>disruptor</module>
         <module>flink</module>
         <module>thread</module>
+        <module>spring</module>
     </modules>
 
     <build>
