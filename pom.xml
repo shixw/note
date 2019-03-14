@@ -18,6 +18,7 @@
         <module>flink</module>
         <module>thread</module>
         <module>spring</module>
+        <module>data_structure_algorithms</module>
     </modules>
 
     <build>
