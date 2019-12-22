@@ -19,6 +19,7 @@
         <module>thread</module>
         <module>spring</module>
         <module>data_structure_algorithms</module>
+        <module>java-agent-demo</module>
     </modules>
 
     <build>
