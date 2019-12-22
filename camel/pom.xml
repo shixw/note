@@ -12,7 +12,7 @@
     <artifactId>camel</artifactId>
 
     <properties>
-        <camel.version>2.23.0</camel.version>
+        <camel.version>3.0.0</camel.version>
     </properties>
     <dependencies>
         <dependency>
